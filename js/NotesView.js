@@ -8,11 +8,20 @@ export default class NotesView {
         this.root.innerHTML = `
             <div class="notes__sidebar">
                 <button class="notes__add" type="button">Add Note</button>
+                <div class="plus-icon-container change-my-color-white ">
+                    <img src="../assets/plus.svg" alt="" class="change-my-color-white" />
+                </div>
                 <div class="notes__list"></div>
             </div>
             <div class="notes__preview">
-                <input class="notes__title" type="text" placeholder="New Note...">
-                <textarea class="notes__body">Take Note...</textarea>
+                <div class="notes-area">
+                    <input class="notes__title" type="text" placeholder="New Note...">
+                    <textarea class="notes__body">Take Note...</textarea>
+                </div>
+                <div class="copy-icon-container">
+                    <img src="../assets/copy.svg" alt="" />
+                </div>
+                
             </div>
         `;
 
@@ -49,6 +58,9 @@ export default class NotesView {
                 <div class="notes__small-updated">
                     ${updated.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
                 </div>
+                <div class="delete-btn-container  ">
+                    <img src="../assets/delete.svg" alt="" class="change-my-color-red"  />
+                </div>
             </div>
         `;
     }
@@ -71,13 +83,51 @@ export default class NotesView {
                 this.onNoteSelect(noteListItem.dataset.noteId);
             });
 
-            noteListItem.addEventListener("dblclick", () => {
-                const doDelete = confirm("Are you sure you want to delete this note?");
 
-                if (doDelete) {
-                    this.onNoteDelete(noteListItem.dataset.noteId);
-                }
-            });
+
+            notesListContainer.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+                    let deletebtn = noteListItem.querySelector('.delete-btn-container')
+                    deletebtn.addEventListener('click',()=>{
+                        const doDelete = confirm("Are you sure you want to delete this note?");
+
+                        if (doDelete) {
+                            this.onNoteDelete(noteListItem.dataset.noteId);
+                        }
+                    })
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // delete btn added new 
+            // let deletebtn = document.querySelectorAll('.delete-btn');
+            // deletebtn.forEach(button =>{
+            //     button.addEventListener('click',()=>{
+            //         const doDelete = confirm("Are you sure you want to delete this note?");
+
+            //     if (doDelete) {
+            //         this.onNoteDelete(noteListItem.dataset.noteId);
+            //     }
+            //     })
+            // })
+            // deletebtn.addEventListener('click',()=>{
+            //     const doDelete = confirm("Are you sure you want to delete this note?");
+
+            //     if (doDelete) {
+            //         this.onNoteDelete(noteListItem.dataset.noteId);
+            //     }
+            // })
+            
         });
     }
 

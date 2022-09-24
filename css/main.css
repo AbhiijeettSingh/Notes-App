@@ -93,3 +93,25 @@ body {
     margin-top: 2em;
     resize: none;
 }
+
+.copy-icon-container, .plus-icon-container, .delete-btn-container{
+    width:2rem ;
+}
+.plus-icon-container{
+    position: absolute;
+    top: 1.7rem;
+    left: 14rem;
+    
+}
+.delete-btn-container{
+    width: 2rem;
+    margin-left: 15rem;
+    position: relative;
+    bottom: 7rem;
+}
+.copy-icon-container{
+    position: absolute;
+    top: 1.7rem;
+    right: 3rem;
+}
+
